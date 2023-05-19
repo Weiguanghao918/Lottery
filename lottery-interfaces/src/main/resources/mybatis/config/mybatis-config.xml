@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTDConfig 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <package name="cn.itedus.lottery.cn.itedus.lottery.infrastructure.po.Activity"/>
+    </typeAliases>
+</configuration>
+

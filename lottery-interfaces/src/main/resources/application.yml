@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    username: root
+    password: 980918
+    url: jdbc:mysql://localhost:3306/lottery?useUnicode=true&characterEncoding=utf8&
+    driver-class-name: com.mysql.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  config-location: classpath:/mybatis/config/mybatis-config.xml
+
+#Dubbo 广播配置
+dubbo:
+  application:
+    name: Lottery
+    version: 1.0.0
+  registry:
+    address: N/A
+  protocol:
+    name: dubbo
+    port: 20880
+  scan:
+    base-packages: cn.itedus.lottery.rpc
