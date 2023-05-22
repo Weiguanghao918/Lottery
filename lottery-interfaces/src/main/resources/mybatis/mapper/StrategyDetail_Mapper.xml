@@ -2,22 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itedus.lottery.infrastructure.dao.IStrategyDetailDao">
 
-    <select id="queryStrategyDetailList" parameterType="java.lang.Long" resultType="cn.itedus.lottery.infrastructure.po.StrategyDetail">
-        SELECT id, strategyId, awardId, awardCount, awardSurplusCount,
-               awardRate, createTime, updateTime
+    <resultMap id="strategyDetailMap" type="cn.itedus.lottery.infrastructure.po.StrategyDetail">
+        <id column="id" property="id"/>
+        <result column="strategy_id" property="strategyId"/>
+        <result column="award_id" property="awardId"/>
+        <result column="award_name" property="awardName"/>
+        <result column="award_count" property="awardCount"/>
+        <result column="award_surplus_count" property="awardSurplusCount"/>
+        <result column="award_rate" property="awardRate"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="queryStrategyDetailList" parameterType="java.lang.Long" resultMap="strategyDetailMap">
+        SELECT id, strategy_id, award_id, award_count, award_surplus_count,
+               award_rate, create_time, update_time
         FROM strategy_detail
-        WHERE strategyId = #{strategyId}
+        WHERE strategy_id = #{strategyId}
     </select>
 
     <select id="queryNoStockStrategyAwardList" parameterType="java.lang.Long" resultType="java.lang.String">
-        SELECT awardId
+        SELECT award_id AS awardId
         FROM strategy_detail
-        WHERE strategyId = #{strategyId} AND awardSurplusCount = 0
+        WHERE strategy_id = #{strategyId} AND award_surplus_count = 0
     </select>
 
     <update id="deductStock" parameterType="cn.itedus.lottery.infrastructure.po.StrategyDetail">
-        UPDATE strategy_detail SET awardSurplusCount = awardSurplusCount - 1
-        WHERE strategyId = #{strategyId} AND awardId = #{awardId} AND awardSurplusCount > 0
+        UPDATE strategy_detail SET award_surplus_count = award_surplus_count - 1
+        WHERE strategy_id = #{strategyId} AND award_id = #{awardId} AND award_surplus_count > 0
     </update>
 
 </mapper>

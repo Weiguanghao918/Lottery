@@ -52,90 +52,75 @@ public class Strategy {
      */
     private Date updateTime;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
     }
 
-    public void setStrategyId(Long strategyId) {
-        this.strategyId = strategyId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getStrategyId() {
         return strategyId;
     }
 
-    public void setStrategyDesc(String strategyDesc) {
-        this.strategyDesc = strategyDesc;
+    public void setStrategyId(Long strategyId) {
+        this.strategyId = strategyId;
     }
 
     public String getStrategyDesc() {
         return strategyDesc;
     }
 
-    public void setStrategyMode(Integer strategyMode) {
-        this.strategyMode = strategyMode;
+    public void setStrategyDesc(String strategyDesc) {
+        this.strategyDesc = strategyDesc;
     }
 
     public Integer getStrategyMode() {
         return strategyMode;
     }
 
-    public void setGrantType(Integer grantType) {
-        this.grantType = grantType;
+    public void setStrategyMode(Integer strategyMode) {
+        this.strategyMode = strategyMode;
     }
 
     public Integer getGrantType() {
         return grantType;
     }
 
-    public void setGrantDate(Date grantDate) {
-        this.grantDate = grantDate;
+    public void setGrantType(Integer grantType) {
+        this.grantType = grantType;
     }
 
     public Date getGrantDate() {
         return grantDate;
     }
 
-    public void setExtInfo(String extInfo) {
-        this.extInfo = extInfo;
+    public void setGrantDate(Date grantDate) {
+        this.grantDate = grantDate;
     }
 
     public String getExtInfo() {
         return extInfo;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setExtInfo(String extInfo) {
+        this.extInfo = extInfo;
     }
 
     public Date getCreateTime() {
         return createTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    @Override
-    public String toString() {
-        return "Strategy{" +
-                "id=" + id + '\'' +
-                "strategyId=" + strategyId + '\'' +
-                "strategyDesc=" + strategyDesc + '\'' +
-                "strategyMode=" + strategyMode + '\'' +
-                "grantType=" + grantType + '\'' +
-                "grantDate=" + grantDate + '\'' +
-                "extInfo=" + extInfo + '\'' +
-                "createTime=" + createTime + '\'' +
-                "updateTime=" + updateTime + '\'' +
-                '}';
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

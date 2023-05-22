@@ -24,6 +24,11 @@ public class StrategyDetail {
     private String awardId;
 
     /**
+     * 奖品名称
+     */
+    private String awardName;
+
+    /**
      * 奖品库存
      */
     private Integer awardCount;
@@ -70,6 +75,14 @@ public class StrategyDetail {
 
     public void setAwardId(String awardId) {
         this.awardId = awardId;
+    }
+
+    public String getAwardName() {
+        return awardName;
+    }
+
+    public void setAwardName(String awardName) {
+        this.awardName = awardName;
     }
 
     public Integer getAwardCount() {
