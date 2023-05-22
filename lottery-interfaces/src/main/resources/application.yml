@@ -21,3 +21,5 @@ dubbo:
     port: 20880
   scan:
     base-packages: cn.itedus.lottery.rpc
+server:
+  port: 8080

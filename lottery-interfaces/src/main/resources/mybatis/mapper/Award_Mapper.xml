@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itedus.lottery.infrastructure.dao.IAwardDao">
+
+    <resultMap id="BaseResultMap" type="cn.itedus.lottery.infrastructure.po.Award">
+        <!--@JPA.Support generated on 2023-05-22 11:16:30.-->
+        <!--@Table award-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="awardId" jdbcType="BIGINT" property="awardId"/>
+        <result column="awardType" jdbcType="INTEGER" property="awardType"/>
+        <result column="awardCount" jdbcType="INTEGER" property="awardCount"/>
+        <result column="awardName" jdbcType="VARCHAR" property="awardName"/>
+        <result column="awardContent" jdbcType="VARCHAR" property="awardContent"/>
+        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        <!--@JPA.Support generated on 2023-05-22 11:16:30.-->
+        id, awardId, awardType, awardCount, awardName, awardContent, createTime, updateTime
+    </sql>
+
+    <select id="queryAwardInfo" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM award
+        WHERE awardId = #{awardId}
+    </select>
+
+</mapper>
