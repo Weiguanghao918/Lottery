@@ -11,7 +11,7 @@ public class StrategyDetail {
     /**
      * 自增ID
      */
-    private Long id;
+    private String id;
 
     /**
      * 策略ID
@@ -24,9 +24,14 @@ public class StrategyDetail {
     private String awardId;
 
     /**
-     * 奖品数量
+     * 奖品库存
      */
     private Integer awardCount;
+
+    /**
+     * 奖品剩余库存
+     */
+    private Integer awardSurplusCount;
 
     /**
      * 中奖概率
@@ -36,79 +41,74 @@ public class StrategyDetail {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private String createTime;
 
     /**
      * 修改时间
      */
-    private Date updateTime;
+    private String updateTime;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setStrategyId(Long strategyId) {
-        this.strategyId = strategyId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public Long getStrategyId() {
         return strategyId;
     }
 
-    public void setAwardId(String awardId) {
-        this.awardId = awardId;
+    public void setStrategyId(Long strategyId) {
+        this.strategyId = strategyId;
     }
 
     public String getAwardId() {
         return awardId;
     }
 
-    public void setAwardCount(Integer awardCount) {
-        this.awardCount = awardCount;
+    public void setAwardId(String awardId) {
+        this.awardId = awardId;
     }
 
     public Integer getAwardCount() {
         return awardCount;
     }
 
-    public void setAwardRate(BigDecimal awardRate) {
-        this.awardRate = awardRate;
+    public void setAwardCount(Integer awardCount) {
+        this.awardCount = awardCount;
+    }
+
+    public Integer getAwardSurplusCount() {
+        return awardSurplusCount;
+    }
+
+    public void setAwardSurplusCount(Integer awardSurplusCount) {
+        this.awardSurplusCount = awardSurplusCount;
     }
 
     public BigDecimal getAwardRate() {
         return awardRate;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setAwardRate(BigDecimal awardRate) {
+        this.awardRate = awardRate;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    @Override
-    public String toString() {
-        return "StrategyDetail{" +
-                "id=" + id + '\'' +
-                "strategyId=" + strategyId + '\'' +
-                "awardId=" + awardId + '\'' +
-                "awardCount=" + awardCount + '\'' +
-                "awardRate=" + awardRate + '\'' +
-                "createTime=" + createTime + '\'' +
-                "updateTime=" + updateTime + '\'' +
-                '}';
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
     }
 }

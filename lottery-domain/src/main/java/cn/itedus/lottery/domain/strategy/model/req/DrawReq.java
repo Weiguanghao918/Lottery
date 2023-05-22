@@ -2,7 +2,7 @@ package cn.itedus.lottery.domain.strategy.model.req;
 
 /**
  * @author: Guanghao Wei
- * @date: 2023-05-22 11:31
+ * @date: 2023-05-22 14:49
  * @description:
  */
 public class DrawReq {

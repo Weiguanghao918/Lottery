@@ -11,6 +11,7 @@ import cn.itedus.lottery.infrastructure.po.StrategyDetail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -20,11 +21,13 @@ import java.util.List;
  */
 @Component
 public class StrategyRepository implements IStrategyRepository {
-    @Autowired
+    @Resource
     private IStrategyDao strategyDao;
-    @Autowired
+
+    @Resource
     private IStrategyDetailDao strategyDetailDao;
-    @Autowired
+
+    @Resource
     private IAwardDao awardDao;
 
     @Override
@@ -37,5 +40,19 @@ public class StrategyRepository implements IStrategyRepository {
     @Override
     public Award queryAwardInfo(String awardId) {
         return awardDao.queryAwardInfo(awardId);
+    }
+
+    @Override
+    public List<String> queryNoStockStrategyAwardList(Long strategyId) {
+        return strategyDetailDao.queryNoStockStrategyAwardList(strategyId);
+    }
+
+    @Override
+    public boolean deductStock(Long strategyId, String awardId) {
+        StrategyDetail req = new StrategyDetail();
+        req.setStrategyId(strategyId);
+        req.setAwardId(awardId);
+        int count = strategyDetailDao.deductStock(req);
+        return count == 1;
     }
 }

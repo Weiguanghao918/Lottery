@@ -1,29 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.itedus.lottery.infrastructure.dao.IStrategyDao">
-    <resultMap id="BaseResultMap" type="cn.itedus.lottery.infrastructure.po.Strategy">
-        <!--@JPA.Support generated on 2023-05-22 11:16:30.-->
-        <!--@Table strategy-->
-        <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="strategyId" jdbcType="BIGINT" property="strategyId"/>
-        <result column="strategyDesc" jdbcType="VARCHAR" property="strategyDesc"/>
-        <result column="strategyMode" jdbcType="INTEGER" property="strategyMode"/>
-        <result column="grantType" jdbcType="INTEGER" property="grantType"/>
-        <result column="grantDate" jdbcType="TIMESTAMP" property="grantDate"/>
-        <result column="extInfo" jdbcType="VARCHAR" property="extInfo"/>
-        <result column="createTime" jdbcType="TIMESTAMP" property="createTime"/>
-        <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime"/>
-    </resultMap>
-    <sql id="Base_Column_List">
-        <!--@JPA.Support generated on 2023-05-22 11:16:30.-->
-        id, strategyId, strategyDesc, strategyMode, grantType, grantDate, extInfo, createTime, updateTime
-    </sql>
 
-    <select id="queryStrategy" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <select id="queryStrategy" parameterType="java.lang.Long" resultType="cn.itedus.lottery.infrastructure.po.Strategy">
         SELECT
-        <include refid="Base_Column_List"/>
+        id, strategyId, strategyDesc, strategyMode, grantType,
+        grantDate, extInfo , createTime, updateTime
         FROM strategy
         WHERE strategyId = #{strategyId}
     </select>
+
 </mapper>

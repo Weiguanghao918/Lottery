@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 /**
  * @author: Guanghao Wei
- * @date: 2023-05-22 11:29
+ * @date: 2023-05-22 14:50
  * @description: 奖品概率信息，奖品编号、库存、概率
  */
 public class AwardRateInfo {

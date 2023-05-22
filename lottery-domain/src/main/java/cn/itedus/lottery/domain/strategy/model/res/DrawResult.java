@@ -1,32 +1,49 @@
 package cn.itedus.lottery.domain.strategy.model.res;
 
+import cn.itedus.lottery.common.Constants;
+import cn.itedus.lottery.domain.strategy.model.vo.DrawAwardInfo;
+
 /**
  * @author: Guanghao Wei
- * @date: 2023-05-22 11:30
- * @description:
+ * @date: 2023-05-22 14:49
+ * @description: 抽奖结果
  */
 public class DrawResult {
 
-    // 用户ID
+    /**
+     * 用户ID
+     */
     private String uId;
 
-    // 策略ID
+    /**
+     * 策略ID
+     */
     private Long strategyId;
 
-    // 奖品ID
-    private String rewardId;
+    /**
+     * 中奖状态：0未中奖、1已中奖、2兜底奖 Constants.DrawState
+     */
+    private Integer drawState = Constants.DrawState.FAIL.getCode();
 
-    // 奖品名称
-    private String awardName;
+    /**
+     * 中奖奖品信息
+     */
+    private DrawAwardInfo drawAwardInfo;
 
     public DrawResult() {
     }
 
-    public DrawResult(String uId, Long strategyId, String rewardId, String awardName) {
+    public DrawResult(String uId, Long strategyId, Integer drawState) {
         this.uId = uId;
         this.strategyId = strategyId;
-        this.rewardId = rewardId;
-        this.awardName = awardName;
+        this.drawState = drawState;
+    }
+
+    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardInfo drawAwardInfo) {
+        this.uId = uId;
+        this.strategyId = strategyId;
+        this.drawState = drawState;
+        this.drawAwardInfo = drawAwardInfo;
     }
 
     public String getuId() {
@@ -45,19 +62,20 @@ public class DrawResult {
         this.strategyId = strategyId;
     }
 
-    public String getRewardId() {
-        return rewardId;
+    public Integer getDrawState() {
+        return drawState;
     }
 
-    public void setRewardId(String rewardId) {
-        this.rewardId = rewardId;
+    public void setDrawState(Integer drawState) {
+        this.drawState = drawState;
     }
 
-    public String getAwardName() {
-        return awardName;
+    public DrawAwardInfo getDrawAwardInfo() {
+        return drawAwardInfo;
     }
 
-    public void setAwardName(String awardName) {
-        this.awardName = awardName;
+    public void setDrawAwardInfo(DrawAwardInfo drawAwardInfo) {
+        this.drawAwardInfo = drawAwardInfo;
     }
+
 }
