@@ -22,8 +22,8 @@ public class DistributionBase {
      * @param uId               用户Id
      * @param orderId           订单Id
      * @param awardId           奖品Id
-     * @param awardState        奖品状态
-     * @param awardStateInfo    奖品状态信息
+     * @param awardState        奖品发放状态编号
+     * @param awardStateInfo    奖品发放状态信息
      */
 
     protected void updateUserAwardState(String uId, String orderId, String awardId, Integer awardState, String awardStateInfo) {
