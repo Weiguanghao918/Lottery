@@ -23,7 +23,7 @@ public class SupportTest {
     private Logger logger = LoggerFactory.getLogger(SupportTest.class);
 
     @Resource
-    private Map<Constants.Ids, IdGenerator> idGeneratorMap;
+    private Map<Enum<Constants.Ids>, IdGenerator> idGeneratorMap;
 
     @Test
     public void test_ids() {

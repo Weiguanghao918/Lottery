@@ -28,8 +28,8 @@ public class IdContext {
      * @return IdGenerator实现类
      */
     @Bean
-    public Map<Constants.Ids, IdGenerator> idGenerator(SnowFlake snowFlake, ShortCode shortCode, RandomNumeric randomNumeric) {
-        Map<Constants.Ids, IdGenerator> idGeneratorMap = new HashMap<>(8);
+    public Map<Enum<Constants.Ids>, IdGenerator> idGenerator(SnowFlake snowFlake, ShortCode shortCode, RandomNumeric randomNumeric) {
+        Map<Enum<Constants.Ids>, IdGenerator> idGeneratorMap = new HashMap<>(8);
         idGeneratorMap.put(Constants.Ids.SnowFlake, snowFlake);
         idGeneratorMap.put(Constants.Ids.ShortCode, shortCode);
         idGeneratorMap.put(Constants.Ids.RandomNumeric, randomNumeric);
