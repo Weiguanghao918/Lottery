@@ -33,4 +33,10 @@
         WHERE activity_id = #{activityId}
     </select>
 
+    <update id="alterState" parameterType="cn.itedus.lottery.domain.activity.model.vo.AlterStateVO">
+        UPDATE activity
+        SET state = #{afterState}
+        WHERE activity_id = #{activityId} and state = #{beforeState}
+    </update>
+
 </mapper>

@@ -14,6 +14,24 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
+    <insert id="insertList" parameterType="java.util.List">
+        INSERT INTO strategy_detail (strategy_id, award_id, award_name, award_count, award_surplus_count,
+        award_rate, create_time, update_time)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.strategyId},
+            #{item.awardId},
+            #{item.awardName},
+            #{item.awardCount},
+            #{item.awardSurplusCount},
+            #{item.awardRate},
+            NOW(),
+            NOW()
+            )
+        </foreach>
+    </insert>
+
     <select id="queryStrategyDetailList" parameterType="java.lang.Long" resultMap="strategyDetailMap">
         SELECT id, strategy_id, award_id, award_count, award_surplus_count,
                award_rate, create_time, update_time

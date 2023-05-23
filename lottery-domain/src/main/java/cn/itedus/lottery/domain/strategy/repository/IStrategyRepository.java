@@ -1,7 +1,7 @@
 package cn.itedus.lottery.domain.strategy.repository;
 
 import cn.itedus.lottery.domain.strategy.model.aggregates.StrategyRich;
-import cn.itedus.lottery.infrastructure.po.Award;
+import cn.itedus.lottery.domain.strategy.model.vo.AwardBriefVO;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public interface IStrategyRepository {
      * @param awardId 奖品Id
      * @return 奖品信息
      */
-    Award queryAwardInfo(String awardId);
+    AwardBriefVO queryAwardInfo(String awardId);
 
     /**
      * 查询满足条件的无库存商品
