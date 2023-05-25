@@ -10,6 +10,8 @@
         <result column="activity_name" property="activityName"/>
         <result column="take_date" property="takeDate"/>
         <result column="take_count" property="takeCount"/>
+        <result column="strategy_id" property="strategyId"/>
+        <result column="state" property="state"/>
         <result column="uuid" property="uuid"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
@@ -18,10 +20,26 @@
     <insert id="insert" parameterType="cn.itedus.lottery.infrastructure.po.UserTakeActivity">
         INSERT INTO user_take_activity
         (u_id, take_id, activity_id, activity_name, take_date,
-         take_count, uuid, create_time, update_time)
-        VALUES
-        (#{uId}, #{takeId}, #{activityId}, #{activityName}, #{takeDate},
-         #{takeCount}, #{uuid}, now(), now())
+         take_count, strategy_id, state, uuid, create_time, update_time)
+        VALUES (#{uId}, #{takeId}, #{activityId}, #{activityName}, #{takeDate},
+                #{takeCount}, #{strategyId}, #{state}, #{uuid}, now(), now())
     </insert>
+
+    <select id="queryNoConsumedTakeActivityOrder" parameterType="cn.itedus.lottery.infrastructure.po.UserTakeActivity" resultMap="userTakeActivityMap">
+        SELECT activity_id, take_id, strategy_id, state
+        FROM user_take_activity
+        WHERE u_id = #{uId}
+          AND activity_id = #{activityId}
+          AND state = 0
+        ORDER BY id DESC LIMIT 1
+    </select>
+
+    <update id="lockTackActivity" parameterType="cn.itedus.lottery.infrastructure.po.UserTakeActivity">
+        UPDATE user_take_activity
+        SET state = 1
+        WHERE u_id = #{uId}
+          AND activity_id = #{activityId}
+          AND state = 0
+    </update>
 
 </mapper>

@@ -27,9 +27,9 @@
          grant_type, grant_date, grant_state, award_id, award_type,
          award_name, award_content, uuid, create_time, update_time)
         VALUES
-        (#{uId},#{activityId},#{orderId},#{strategyId},#{strategyMode},
-         #{grantType},#{grantDate},#{grantState},#{awardId},#{awardType},
-         #{awardName},#{awardContent},#{uuid},now(),now())
+            (#{uId},#{activityId},#{orderId},#{strategyId},#{strategyMode},
+             #{grantType},#{grantDate},#{grantState},#{awardId},#{awardType},
+             #{awardName},#{awardContent},#{uuid},now(),now())
     </insert>
 
     <select id="queryUserStrategyExportByUId" parameterType="java.lang.String" resultMap="userStrategyExportMap">

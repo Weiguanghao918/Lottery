@@ -1,11 +1,9 @@
 package cn.itedus.lottery.common;
 
 /**
- * 博客：https://bugstack.cn - 沉淀、分享、成长，让自己和他人都能有所收获！
- * 公众号：bugstack虫洞栈
- * Create by 小傅哥(fustack)
- * <p>
- * 枚举信息定义
+ * @author: Guanghao Wei
+ * @date: 2023-05-25 17:19
+ * @description: 枚举信息定义
  */
 public class Constants {
 
@@ -13,7 +11,11 @@ public class Constants {
         SUCCESS("0000", "成功"),
         UN_ERROR("0001", "未知失败"),
         ILLEGAL_PARAMETER("0002", "非法参数"),
-        INDEX_DUP("0003", "主键冲突");
+        INDEX_DUP("0003", "主键冲突"),
+
+        NO_UPDATE("0004", "SQL操作无更新"),
+
+        LOSING_DRAW("D001", "未中奖");
 
         private String code;
         private String info;
@@ -278,11 +280,85 @@ public class Constants {
      * Ids 生成策略枚举
      */
     public enum Ids {
-        /** 雪花算法 */
+        /**
+         * 雪花算法
+         */
         SnowFlake,
-        /** 日期算法 */
+        /**
+         * 日期算法
+         */
         ShortCode,
-        /** 随机算法 */
+        /**
+         * 随机算法
+         */
         RandomNumeric;
     }
+
+    /**
+     * 活动单使用状态 0未使用、1已使用
+     */
+    public enum TaskState {
+
+        NO_USED(0, "未使用"),
+        USED(1, "已使用");
+
+        private Integer code;
+        private String info;
+
+        TaskState(Integer code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+    /**
+     * 发奖状态 0初始、1完成、2失败
+     */
+    public enum GrantState{
+
+        INIT(0, "初始"),
+        COMPLETE(1, "完成"),
+        FAIL(2, "失败");
+
+        private Integer code;
+        private String info;
+
+        GrantState(Integer code, String info) {
+            this.code = code;
+            this.info = info;
+        }
+
+        public Integer getCode() {
+            return code;
+        }
+
+        public void setCode(Integer code) {
+            this.code = code;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+    }
+
+
 }

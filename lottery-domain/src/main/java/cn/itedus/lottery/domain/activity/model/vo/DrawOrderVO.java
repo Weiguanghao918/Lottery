@@ -1,22 +1,23 @@
-package cn.itedus.lottery.infrastructure.po;
+package cn.itedus.lottery.domain.activity.model.vo;
 
 import java.util.Date;
 
 /**
  * @author: Guanghao Wei
- * @date: 2023-05-24 14:24
- * @description: 用户策略计算结果表
+ * @date: 2023-05-25 17:33
+ * @description: 奖品单
  */
-public class UserStrategyExport {
+public class DrawOrderVO {
 
-    /**
-     * 自增ID
-     */
-    private Long id;
     /**
      * 用户ID
      */
     private String uId;
+
+    /**
+     * 活动领取ID
+     */
+    private Long takeId;
     /**
      * 活动ID
      */
@@ -61,26 +62,6 @@ public class UserStrategyExport {
      * 奖品内容「文字描述、Key、码」
      */
     private String awardContent;
-    /**
-     * 防重ID
-     */
-    private String uuid;
-    /**
-     * 创建时间
-     */
-    private Date createTime;
-    /**
-     * 更新时间
-     */
-    private Date updateTime;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getuId() {
         return uId;
@@ -88,6 +69,14 @@ public class UserStrategyExport {
 
     public void setuId(String uId) {
         this.uId = uId;
+    }
+
+    public Long getTakeId() {
+        return takeId;
+    }
+
+    public void setTakeId(Long takeId) {
+        this.takeId = takeId;
     }
 
     public Long getActivityId() {
@@ -178,27 +167,23 @@ public class UserStrategyExport {
         this.awardContent = awardContent;
     }
 
-    public String getUuid() {
-        return uuid;
+    @Override
+    public String toString() {
+        return "DrawOrderVO{" +
+                "uId='" + uId + '\'' +
+                ", takeId=" + takeId +
+                ", activityId=" + activityId +
+                ", orderId=" + orderId +
+                ", strategyId=" + strategyId +
+                ", strategyMode=" + strategyMode +
+                ", grantType=" + grantType +
+                ", grantDate=" + grantDate +
+                ", grantState=" + grantState +
+                ", awardId='" + awardId + '\'' +
+                ", awardType=" + awardType +
+                ", awardName='" + awardName + '\'' +
+                ", awardContent='" + awardContent + '\'' +
+                '}';
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public Date getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
-    }
 }
