@@ -10,7 +10,9 @@
         <result column="begin_date_time" property="beginDateTime"/>
         <result column="end_date_time" property="endDateTime"/>
         <result column="stock_count" property="stockCount"/>
+        <result column="stock_surplus_count" property="stockSurplusCount"/>
         <result column="take_count" property="takeCount"/>
+        <result column="strategy_id" property="strategyId"/>
         <result column="state" property="state"/>
         <result column="creator" property="creator"/>
         <result column="create_time" property="createTime"/>
@@ -28,7 +30,7 @@
 
     <select id="queryActivityById" parameterType="java.lang.Long" resultMap="activityMap">
         SELECT activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
-               stock_count, take_count, state, creator, create_time, update_time
+               stock_count, stock_surplus_count, take_count, strategy_id, state, creator, create_time, update_time
         FROM activity
         WHERE activity_id = #{activityId}
     </select>
@@ -36,7 +38,14 @@
     <update id="alterState" parameterType="cn.itedus.lottery.domain.activity.model.vo.AlterStateVO">
         UPDATE activity
         SET state = #{afterState}
-        WHERE activity_id = #{activityId} and state = #{beforeState}
+        WHERE activity_id = #{activityId} AND state = #{beforeState}
+    </update>
+
+    <update id="subtractionActivityStock" parameterType="java.lang.Long">
+        UPDATE activity
+        SET stock_surplus_count = stock_surplus_count - 1
+        WHERE activity_id = #{activityId}
+          AND stock_surplus_count > 0
     </update>
 
 </mapper>

@@ -3,11 +3,14 @@ package cn.itedus.lottery.test.domain;
 import cn.itedus.lottery.common.Constants;
 import cn.itedus.lottery.domain.activity.model.aggregates.ActivityConfigRich;
 import cn.itedus.lottery.domain.activity.model.req.ActivityConfigReq;
+import cn.itedus.lottery.domain.activity.model.req.PartakeReq;
+import cn.itedus.lottery.domain.activity.model.res.PartakeResult;
 import cn.itedus.lottery.domain.activity.model.vo.ActivityVO;
 import cn.itedus.lottery.domain.activity.model.vo.AwardVO;
 import cn.itedus.lottery.domain.activity.model.vo.StrategyDetailVO;
 import cn.itedus.lottery.domain.activity.model.vo.StrategyVO;
 import cn.itedus.lottery.domain.activity.service.deploy.IActivityDeploy;
+import cn.itedus.lottery.domain.activity.service.partake.IActivityPartake;
 import cn.itedus.lottery.domain.activity.service.stateflow.IStateHandler;
 import com.alibaba.fastjson.JSON;
 import org.junit.Before;
@@ -43,7 +46,10 @@ public class ActivityTest {
 
     private ActivityConfigRich activityConfigRich;
 
-    private Long activityId = 120981321L;
+    private Long activityId = 100001L;
+
+    @Resource
+    private IActivityPartake activityPartake;
 
 //    @Before
     public void init() {
@@ -57,7 +63,7 @@ public class ActivityTest {
         activity.setStockCount(100);
         activity.setTakeCount(10);
         activity.setState(Constants.ActivityState.EDIT.getCode());
-        activity.setCreator("xiaofuge");
+        activity.setCreator("wgh");
 
         StrategyVO strategy = new StrategyVO();
         strategy.setStrategyId(10002L);
@@ -160,6 +166,7 @@ public class ActivityTest {
     public void test_createActivity() {
         activityDeploy.createActivity(new ActivityConfigReq(activityId, activityConfigRich));
     }
+
     @Test
     public void test_alterState() {
         logger.info("提交审核，测试：{}", JSON.toJSONString(stateHandler.arraignment(activityId, Constants.ActivityState.EDIT)));
@@ -168,6 +175,13 @@ public class ActivityTest {
         logger.info("二次提审，测试：{}", JSON.toJSONString(stateHandler.checkPass(activityId, Constants.ActivityState.EDIT)));
     }
 
+    @Test
+    public void test_activityPartake(){
+        PartakeReq req = new PartakeReq("Uhdgkw766120d",100001L);
+        PartakeResult res = activityPartake.doPartake(req);
+        logger.info("请求参数：{}", JSON.toJSONString(req));
+        logger.info("测试结果：{}", JSON.toJSONString(res));
+    }
 
 
 }

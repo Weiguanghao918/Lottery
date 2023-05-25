@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itedus.lottery.infrastructure.dao.IUserTakeActivityCountDao">
+
+    <resultMap id="userTakeActivityCountMap" type="cn.itedus.lottery.infrastructure.po.UserTakeActivityCount">
+        <id column="id" property="id"/>
+        <id column="u_id" property="uId"/>
+        <id column="activity_id" property="activityId"/>
+        <id column="total_count" property="totalCount"/>
+        <id column="left_count" property="leftCount"/>
+        <id column="create_time" property="createTime"/>
+        <id column="update_time" property="updateTime"/>
+    </resultMap>
+
+    <select id="queryUserTakeActivityCount" parameterType="cn.itedus.lottery.infrastructure.po.UserTakeActivityCount"
+            resultMap="userTakeActivityCountMap">
+        SELECT total_count, left_count
+        FROM user_take_activity_count
+        WHERE u_id = #{uId}
+          AND activity_id = #{activityId}
+    </select>
+
+
+    <insert id="insert" parameterType="cn.itedus.lottery.infrastructure.po.UserTakeActivityCount">
+        INSERT INTO user_take_activity_count
+            (u_id, activity_id, total_count, left_count, create_time, update_time)
+        VALUES (#{uId}, #{activityId}, #{totalCount}, #{leftCount}, now(), now())
+    </insert>
+    <update id="updateLeftCount" parameterType="cn.itedus.lottery.infrastructure.po.UserTakeActivityCount">
+        UPDATE user_take_activity_count
+        SET left_count = left_count - 1
+        WHERE u_id = #{uId}
+          AND activity_id = #{activityId}
+          AND left_count > 0
+    </update>
+
+
+</mapper>

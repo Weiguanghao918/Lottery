@@ -1,3 +1,5 @@
+create database lottery_02;
+
 /*
  Navicat Premium Data Transfer
 
@@ -5,16 +7,14 @@
  Source Server Type    : MySQL
  Source Server Version : 50639
  Source Host           : localhost:3306
- Source Schema         : lottery_01
+ Source Schema         : lottery_02
 
  Target Server Type    : MySQL
  Target Server Version : 50639
  File Encoding         : 65001
 
- Date: 22/09/2021 19:52:03
+ Date: 01/10/2021 17:43:48
 */
-
-create database lottery_02;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -160,12 +160,15 @@ CREATE TABLE `user_take_activity` (
   `update_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_uuid` (`uuid`) USING BTREE COMMENT '防重ID'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='用户参与活动记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='用户参与活动记录表';
 
 -- ----------------------------
 -- Records of user_take_activity
 -- ----------------------------
 BEGIN;
+INSERT INTO `user_take_activity` VALUES (1, 'EDrfwe0193131', 121019889410, 100001, '????', '2021-09-22 20:46:03', 10, 'lfjdlsoi230ii01', '2021-09-22 20:46:03', '2021-09-22 20:46:03');
+INSERT INTO `user_take_activity` VALUES (2, 'Ukdli109op811d', 121019889410, 100001, '????', '2021-09-22 20:47:41', 10, 'Ukdli109op811d', '2021-09-22 20:47:41', '2021-09-22 20:47:41');
+INSERT INTO `user_take_activity` VALUES (3, 'Uhdgkw766120d', 1443842109978345472, 100001, '???', '2021-10-01 15:35:16', 1, '100001_Uhdgkw766120d_1', '2021-10-01 15:38:01', '2021-10-01 15:38:01');
 COMMIT;
 
 -- ----------------------------
