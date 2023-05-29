@@ -16,9 +16,4 @@ public interface IDistributionGoods {
      */
     DistributionRes doDistribution(GoodsReq req);
 
-    /**
-     * 获取奖品类型的编号
-     * @return 奖品类型编号
-     */
-    Integer getDistributionGoodsName();
 }

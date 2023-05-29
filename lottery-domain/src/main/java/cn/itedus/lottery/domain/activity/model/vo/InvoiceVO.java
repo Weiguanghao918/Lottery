@@ -1,13 +1,13 @@
-package cn.itedus.lottery.domain.award.model.req;
+package cn.itedus.lottery.domain.activity.model.vo;
 
 import cn.itedus.lottery.domain.award.model.vo.ShippingAddress;
 
 /**
  * @author: Guanghao Wei
- * @date: 2023-05-22 18:48
- * @description: 奖品发货信息
+ * @date: 2023-05-29 16:29
+ * @description: 中奖物品发货单，用于发送MQ消息，异步触达发货奖品给用户
  */
-public class GoodsReq {
+public class InvoiceVO {
 
     /** 用户ID */
     private String uId;
@@ -17,6 +17,11 @@ public class GoodsReq {
 
     /** 奖品ID */
     private String awardId;
+
+    /**
+     * 奖品类型（1:文字描述、2:兑换码、3:优惠券、4:实物奖品）
+     */
+    private Integer awardType;
 
     /** 奖品名称 */
     private String awardName;
@@ -29,26 +34,6 @@ public class GoodsReq {
 
     /** 扩展信息，用于一些个性商品发放所需要的透传字段内容 */
     private String extInfo;
-
-    public GoodsReq() {
-    }
-
-    public GoodsReq(String uId, Long orderId, String awardId, String awardName, String awardContent) {
-        this.uId = uId;
-        this.orderId = orderId;
-        this.awardId = awardId;
-        this.awardName = awardName;
-        this.awardContent = awardContent;
-    }
-
-    public GoodsReq(String uId, Long orderId, String awardId, String awardName, String awardContent, ShippingAddress shippingAddress) {
-        this.uId = uId;
-        this.orderId = orderId;
-        this.awardId = awardId;
-        this.awardName = awardName;
-        this.awardContent = awardContent;
-        this.shippingAddress = shippingAddress;
-    }
 
     public String getuId() {
         return uId;
@@ -72,6 +57,14 @@ public class GoodsReq {
 
     public void setAwardId(String awardId) {
         this.awardId = awardId;
+    }
+
+    public Integer getAwardType() {
+        return awardType;
+    }
+
+    public void setAwardType(Integer awardType) {
+        this.awardType = awardType;
     }
 
     public String getAwardName() {
@@ -104,5 +97,19 @@ public class GoodsReq {
 
     public void setExtInfo(String extInfo) {
         this.extInfo = extInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "InvoiceVO{" +
+                "uId='" + uId + '\'' +
+                ", orderId=" + orderId +
+                ", awardId='" + awardId + '\'' +
+                ", awardType=" + awardType +
+                ", awardName='" + awardName + '\'' +
+                ", awardContent='" + awardContent + '\'' +
+                ", shippingAddress=" + shippingAddress +
+                ", extInfo='" + extInfo + '\'' +
+                '}';
     }
 }

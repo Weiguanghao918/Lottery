@@ -64,7 +64,7 @@ public class SpringRunnerTest {
 
         //封装发奖参数，orderId：2109313442431 为模拟ID，需要在用户参与领奖活动时生成
         DrawAwardVO drawAwardInfo = drawResult.getDrawAwardInfo();
-        GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), "2109313442431", drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
+        GoodsReq goodsReq = new GoodsReq(drawResult.getuId(), 2109313442431L, drawAwardInfo.getAwardId(), drawAwardInfo.getAwardName(), drawAwardInfo.getAwardContent());
         IDistributionGoods distributionGoodsService = distributionGoodsFactory.getDistributionGoodsService(drawAwardInfo.getAwardType());
         DistributionRes distributionRes = distributionGoodsService.doDistribution(goodsReq);
         logger.info("测试结果：{}", JSON.toJSONString(distributionRes));

@@ -22,14 +22,9 @@ public class PhysicalGoods extends DistributionBase implements IDistributionGood
         logger.info("模拟调用实物发奖 uId：{} awardContent：{}", req.getuId(), req.getAwardContent());
 
         // 更新用户领奖结果
-        super.updateUserAwardState(req.getuId(), req.getOrderId(), req.getAwardId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
+        super.updateUserAwardState(req.getuId(), req.getOrderId(), req.getAwardId(), Constants.GrantState.COMPLETE.getCode());
 
         return new DistributionRes(req.getuId(), Constants.AwardState.SUCCESS.getCode(), Constants.AwardState.SUCCESS.getInfo());
-    }
-
-    @Override
-    public Integer getDistributionGoodsName() {
-        return Constants.AwardType.PhysicalGoods.getCode();
     }
 
 }
