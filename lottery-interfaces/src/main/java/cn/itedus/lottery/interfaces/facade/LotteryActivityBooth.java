@@ -26,7 +26,7 @@ import javax.annotation.Resource;
  * @description: 抽奖活动展台
  */
 @Controller
-public class LotteryActivityBooth implements ILotteryActivityBooth {
+public class LotteryActivityBooth extends ILotteryActivityBooth {
 
     private Logger logger = LoggerFactory.getLogger(LotteryActivityBooth.class);
 
