@@ -1,7 +1,7 @@
 package cn.itedus.lottery.domain.strategy.model.res;
 
 import cn.itedus.lottery.common.Constants;
-import cn.itedus.lottery.domain.strategy.model.vo.DrawAwardInfo;
+import cn.itedus.lottery.domain.strategy.model.vo.DrawAwardVO;
 
 /**
  * @author: Guanghao Wei
@@ -28,7 +28,7 @@ public class DrawResult {
     /**
      * 中奖奖品信息
      */
-    private DrawAwardInfo drawAwardInfo;
+    private DrawAwardVO drawAwardInfo;
 
     public DrawResult() {
     }
@@ -39,7 +39,7 @@ public class DrawResult {
         this.drawState = drawState;
     }
 
-    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardInfo drawAwardInfo) {
+    public DrawResult(String uId, Long strategyId, Integer drawState, DrawAwardVO drawAwardInfo) {
         this.uId = uId;
         this.strategyId = strategyId;
         this.drawState = drawState;
@@ -70,11 +70,11 @@ public class DrawResult {
         this.drawState = drawState;
     }
 
-    public DrawAwardInfo getDrawAwardInfo() {
+    public DrawAwardVO getDrawAwardInfo() {
         return drawAwardInfo;
     }
 
-    public void setDrawAwardInfo(DrawAwardInfo drawAwardInfo) {
+    public void setDrawAwardInfo(DrawAwardVO drawAwardInfo) {
         this.drawAwardInfo = drawAwardInfo;
     }
 
