@@ -195,7 +195,7 @@ public class UserStrategyExport {
     }
 
     public void setMqState(Integer mqState) {
-        MqState = mqState;
+        this.MqState = mqState;
     }
 
     public Date getCreateTime() {
