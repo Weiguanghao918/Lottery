@@ -70,5 +70,11 @@
           AND order_id = #{orderId}
     </update>
 
+    <select id="scanInvoiceMqState" resultMap="userStrategyExportMap">
+        SELECT u_id, order_id, award_id, award_type, award_name, award_content
+        FROM user_strategy_export
+        WHERE mq_state = 2
+           OR (mq_state = 0 AND now() - create_time > 1800000)
+    </select>
 
 </mapper>

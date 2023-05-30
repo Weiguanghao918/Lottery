@@ -78,13 +78,13 @@ public class ActivityProcessImpl implements IActivityProcess {
             @Override
             public void onFailure(Throwable throwable) {
                 // 4.1 MQ 消息发送完成，更新数据库表 user_strategy_export.mq_state = 1
-                activityPartake.updateInvoiceMqState(invoiceVO.getuId(), invoiceVO.getOrderId(), Constants.MQState.COMPLETE.getCode());
+                activityPartake.updateInvoiceMqState(invoiceVO.getuId(), invoiceVO.getOrderId(), Constants.MQState.FAIL.getCode());
             }
 
             @Override
             public void onSuccess(SendResult<String, Object> stringObjectSendResult) {
                 // 4.2 MQ 消息发送失败，更新数据库表 user_strategy_export.mq_state = 2 【等待定时任务扫码补偿MQ消息】
-                activityPartake.updateInvoiceMqState(invoiceVO.getuId(), invoiceVO.getOrderId(), Constants.MQState.FAIL.getCode());
+                activityPartake.updateInvoiceMqState(invoiceVO.getuId(), invoiceVO.getOrderId(), Constants.MQState.COMPLETE.getCode());
             }
         });
 
