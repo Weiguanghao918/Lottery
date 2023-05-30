@@ -23,14 +23,24 @@
         INSERT INTO activity
         (activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
          stock_count, take_count, state, creator, create_time, update_time)
-        VALUES
-            (#{activityId}, #{activityName}, #{activityDesc},#{beginDateTime}, #{endDateTime},
-             #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now())
+        VALUES (#{activityId}, #{activityName}, #{activityDesc}, #{beginDateTime}, #{endDateTime},
+                #{stockCount}, #{takeCount}, #{state}, #{creator}, now(), now())
     </insert>
 
     <select id="queryActivityById" parameterType="java.lang.Long" resultMap="activityMap">
-        SELECT activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
-               stock_count, stock_surplus_count, take_count, strategy_id, state, creator, create_time, update_time
+        SELECT activity_id,
+               activity_name,
+               activity_desc,
+               begin_date_time,
+               end_date_time,
+               stock_count,
+               stock_surplus_count,
+               take_count,
+               strategy_id,
+               state,
+               creator,
+               create_time,
+               update_time
         FROM activity
         WHERE activity_id = #{activityId}
     </select>
@@ -38,7 +48,8 @@
     <update id="alterState" parameterType="cn.itedus.lottery.domain.activity.model.vo.AlterStateVO">
         UPDATE activity
         SET state = #{afterState}
-        WHERE activity_id = #{activityId} AND state = #{beforeState}
+        WHERE activity_id = #{activityId}
+          AND state = #{beforeState}
     </update>
 
     <update id="subtractionActivityStock" parameterType="java.lang.Long">
@@ -47,5 +58,13 @@
         WHERE activity_id = #{activityId}
           AND stock_surplus_count > 0
     </update>
+
+    <select id="scanToDoActivityList" parameterType="java.lang.Long" resultMap="activityMap">
+        SELECT activity_id, activity_name, begin_date_time, end_date_time, state, creator
+        FROM activity
+        WHERE id >= #{id}
+          AND state in (4, 5)
+        ORDER BY ID ASC LIMIT 10
+    </select>
 
 </mapper>

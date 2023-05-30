@@ -94,6 +94,13 @@
                 <version>1.4.2.Final</version>
             </dependency>
             <!-- MapStruct end -->
+
+            <!-- xxl-job-core https://github.com/xuxueli/xxl-job/-->
+            <dependency>
+                <groupId>com.xuxueli</groupId>
+                <artifactId>xxl-job-core</artifactId>
+                <version>2.3.0</version>
+            </dependency>
         </dependencies>
 
 

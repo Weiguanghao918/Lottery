@@ -43,16 +43,17 @@ public interface IActivityRepository {
     /**
      * 变更活动状态
      *
-     * @param activityId    活动ID
-     * @param beforeState   修改前状态
-     * @param afterState    修改后状态
-     * @return              更新结果
+     * @param activityId  活动ID
+     * @param beforeState 修改前状态
+     * @param afterState  修改后状态
+     * @return 更新结果
      */
 
     boolean alterStatus(Long activityId, Enum<Constants.ActivityState> beforeState, Enum<Constants.ActivityState> afterState);
 
     /**
      * 查询活动账单信息 【库存、状态、日期、个人参与次数】
+     *
      * @param req 参与活动请求
      * @return 封装后的活动账单
      */
@@ -60,8 +61,17 @@ public interface IActivityRepository {
 
     /**
      * 扣减活动库存
+     *
      * @param activityId 活动ID
      * @return 扣减结果
      */
     int subtractionActivityStock(Long activityId);
+
+    /**
+     * 扫描待处理的活动列表，状态为：通过、活动中
+     *
+     * @param id ID
+     * @return 待处理的活动集合
+     */
+    List<ActivityVO> scanToDoActivityList(long id);
 }
