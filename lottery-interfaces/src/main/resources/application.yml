@@ -35,6 +35,12 @@ spring:
       #listner负责ack，每调用一次，就立即commit
       ack-mode: manual_immediate
       missing-topics-fatal: false
+  redis:
+    host: 192.168.10.101
+    database: 0
+    port: 6379
+    password: 111111
+    timeout: 3000
 
 # xxl-job
 # 官网：https://github.com/xuxueli/xxl-job/

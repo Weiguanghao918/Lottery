@@ -67,4 +67,11 @@
         ORDER BY ID ASC LIMIT 10
     </select>
 
+    <update id="updateActivityStock" parameterType="cn.itedus.lottery.infrastructure.po.Activity">
+        UPDATE activity
+        SET stock_surplus_count = #{stockSurplusCount}
+        WHERE activity_id = #{activityId}
+          AND stock_surplus_count > #{stockSurplusCount}
+    </update>
+
 </mapper>

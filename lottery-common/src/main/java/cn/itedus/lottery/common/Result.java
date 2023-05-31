@@ -45,7 +45,6 @@ public class Result implements Serializable {
         this.code = code;
         this.info = info;
     }
-
     public String getCode() {
         return code;
     }
