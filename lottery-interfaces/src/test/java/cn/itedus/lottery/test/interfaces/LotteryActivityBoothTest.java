@@ -1,9 +1,9 @@
 package cn.itedus.lottery.test.interfaces;
 
-import cn.itedus.lottery.rpc.ILotteryActivityBooth;
-import cn.itedus.lottery.rpc.req.DrawReq;
-import cn.itedus.lottery.rpc.req.QuantificationDrawReq;
-import cn.itedus.lottery.rpc.res.DrawRes;
+import cn.itedus.lottery.rpc.activity.booth.ILotteryActivityBooth;
+import cn.itedus.lottery.rpc.activity.booth.req.DrawReq;
+import cn.itedus.lottery.rpc.activity.booth.req.QuantificationDrawReq;
+import cn.itedus.lottery.rpc.activity.booth.res.DrawRes;
 import com.alibaba.fastjson.JSON;
 import org.junit.Test;
 import org.junit.runner.RunWith;

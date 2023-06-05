@@ -1,7 +1,9 @@
 package cn.itedus.lottery.domain.activity.service.deploy.impl;
 
 import cn.itedus.lottery.domain.activity.model.aggregates.ActivityConfigRich;
+import cn.itedus.lottery.domain.activity.model.aggregates.ActivityInfoLimitPageRich;
 import cn.itedus.lottery.domain.activity.model.req.ActivityConfigReq;
+import cn.itedus.lottery.domain.activity.model.req.ActivityInfoLimitPageReq;
 import cn.itedus.lottery.domain.activity.model.vo.ActivityVO;
 import cn.itedus.lottery.domain.activity.model.vo.AwardVO;
 import cn.itedus.lottery.domain.activity.model.vo.StrategyDetailVO;
@@ -73,5 +75,10 @@ public class ActivityDeployImpl implements IActivityDeploy {
     @Override
     public List<ActivityVO> scanToDoActivityList(long id) {
         return activityRepository.scanToDoActivityList(id);
+    }
+
+    @Override
+    public ActivityInfoLimitPageRich queryActivityInfoLimitPage(ActivityInfoLimitPageReq req) {
+        return activityRepository.queryActivityInfoLimitPage(req);
     }
 }

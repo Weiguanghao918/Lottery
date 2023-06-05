@@ -1,7 +1,7 @@
 package cn.itedus.lottery.interfaces.assembler;
 
 import cn.itedus.lottery.domain.strategy.model.vo.DrawAwardVO;
-import cn.itedus.lottery.rpc.dto.AwardDTO;
+import cn.itedus.lottery.rpc.activity.booth.dto.AwardDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

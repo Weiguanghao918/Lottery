@@ -1,4 +1,4 @@
-package cn.itedus.lottery.application.process.res;
+package cn.itedus.lottery.application.process.draw.res;
 
 import cn.itedus.lottery.common.Result;
 

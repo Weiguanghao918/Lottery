@@ -74,4 +74,32 @@
           AND stock_surplus_count > #{stockSurplusCount}
     </update>
 
+    <select id="queryActivityInfoCount" parameterType="cn.itedus.lottery.domain.activity.model.req.ActivityInfoLimitPageReq" resultType="java.lang.Long">
+        SELECT count(*) FROM activity
+        <trim prefix="where" prefixOverrides="AND | OR" suffixOverrides="and">
+            <if test="null != activityId">
+                activity_id = #{activityId}
+            </if>
+            <if test="null != activityName">
+                activity_name = #{activityName}
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryActivityInfoList" parameterType="cn.itedus.lottery.domain.activity.model.req.ActivityInfoLimitPageReq" resultMap="activityMap">
+        SELECT id, activity_id, activity_name, activity_desc, begin_date_time, end_date_time,
+        stock_count, stock_surplus_count, take_count, strategy_id, state, creator, create_time, update_time
+        FROM activity
+        <trim prefix="where" prefixOverrides="AND | OR" suffixOverrides="and">
+            <if test="null != activityId">
+                activity_id = #{activityId}
+            </if>
+            <if test="null != activityName">
+                activity_name = #{activityName}
+            </if>
+        </trim>
+        ORDER BY id DESC
+        LIMIT #{pageBegin}, #{pageEnd}
+    </select>
+
 </mapper>

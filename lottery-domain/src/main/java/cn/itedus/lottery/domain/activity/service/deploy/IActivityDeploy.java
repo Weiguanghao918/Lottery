@@ -1,7 +1,9 @@
 package cn.itedus.lottery.domain.activity.service.deploy;
 
 import cn.itedus.lottery.domain.activity.model.aggregates.ActivityConfigRich;
+import cn.itedus.lottery.domain.activity.model.aggregates.ActivityInfoLimitPageRich;
 import cn.itedus.lottery.domain.activity.model.req.ActivityConfigReq;
+import cn.itedus.lottery.domain.activity.model.req.ActivityInfoLimitPageReq;
 import cn.itedus.lottery.domain.activity.model.vo.ActivityVO;
 
 import java.util.List;
@@ -35,4 +37,7 @@ public interface IActivityDeploy {
      * @return 待处理的活动集合
      */
     List<ActivityVO> scanToDoActivityList(long id);
+
+
+    ActivityInfoLimitPageRich queryActivityInfoLimitPage(ActivityInfoLimitPageReq req);
 }

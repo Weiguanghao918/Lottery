@@ -1,4 +1,4 @@
-package cn.itedus.lottery.application.process.req;
+package cn.itedus.lottery.application.process.draw.req;
 
 /**
  * @author: Guanghao Wei
