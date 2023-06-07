@@ -1,4 +1,4 @@
-package cn.itedus.lottery.rpc.activity;
+package cn.itedus.lottery.rpc.activity.deploy;
 
 import cn.itedus.lottery.rpc.activity.deploy.req.ActivityPageReq;
 import cn.itedus.lottery.rpc.activity.deploy.res.ActivityRes;

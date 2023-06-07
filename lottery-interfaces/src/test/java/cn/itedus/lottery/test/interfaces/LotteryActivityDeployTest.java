@@ -1,6 +1,6 @@
 package cn.itedus.lottery.test.interfaces;
 
-import cn.itedus.lottery.rpc.activity.ILotteryActivityDeploy;
+import cn.itedus.lottery.rpc.activity.deploy.ILotteryActivityDeploy;
 import cn.itedus.lottery.rpc.activity.deploy.req.ActivityPageReq;
 import cn.itedus.lottery.rpc.activity.deploy.res.ActivityRes;
 import com.alibaba.fastjson.JSON;

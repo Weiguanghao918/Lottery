@@ -6,7 +6,7 @@ import cn.itedus.lottery.domain.activity.model.aggregates.ActivityInfoLimitPageR
 import cn.itedus.lottery.domain.activity.model.req.ActivityInfoLimitPageReq;
 import cn.itedus.lottery.domain.activity.model.vo.ActivityVO;
 import cn.itedus.lottery.interfaces.assembler.IMapping;
-import cn.itedus.lottery.rpc.activity.ILotteryActivityDeploy;
+import cn.itedus.lottery.rpc.activity.deploy.ILotteryActivityDeploy;
 import cn.itedus.lottery.rpc.activity.deploy.dto.ActivityDTO;
 import cn.itedus.lottery.rpc.activity.deploy.req.ActivityPageReq;
 import cn.itedus.lottery.rpc.activity.deploy.res.ActivityRes;
@@ -14,7 +14,6 @@ import com.alibaba.fastjson.JSON;
 import org.apache.dubbo.config.annotation.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
 
 import javax.annotation.Resource;
 import java.util.List;
