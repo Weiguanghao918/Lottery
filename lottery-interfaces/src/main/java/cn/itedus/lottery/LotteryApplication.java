@@ -1,6 +1,6 @@
 package cn.itedus.lottery;
 
-import javafx.application.Application;
+
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.SpringApplication;
