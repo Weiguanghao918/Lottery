@@ -1,5 +1,6 @@
 package cn.itedus.lottery;
 
+import javafx.application.Application;
 import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.SpringApplication;
@@ -8,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author: Guanghao Wei
  * @date: 2023-05-19 15:47
- * @description: LotteryApplication
+ * @description:
  */
 @SpringBootApplication
 @Configurable
