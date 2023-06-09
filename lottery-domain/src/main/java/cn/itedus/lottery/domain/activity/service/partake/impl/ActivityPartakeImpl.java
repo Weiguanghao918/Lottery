@@ -11,9 +11,10 @@ import cn.itedus.lottery.domain.support.ids.IdGenerator;
 import cn.itedus.middleware.db.router.strategy.IDBRouterStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
-import org.yaml.snakeyaml.constructor.DuplicateKeyException;
+
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -183,5 +184,31 @@ public class ActivityPartakeImpl extends BaseActivityPartake {
     @Override
     public void updateActivityStock(ActivityPartakeRecordVO activityPartakeRecordVO) {
         userTakeActivityRepository.updateActivityStock(activityPartakeRecordVO);
+    }
+
+    @Override
+    public Result lockTackActivity(String uId, Long activityId, Long takeId) {
+        try {
+            dbRouter.doRouter(uId);
+            return transactionTemplate.execute(status -> {
+                try {
+                    //锁定活动领取记录
+                    int lockCount = userTakeActivityRepository.lockTackActivity(uId, activityId, takeId);
+                    if (0 == lockCount) {
+                        status.setRollbackOnly();
+                        logger.error("记录未中奖，个人参与活动抽奖已消耗完 activityId：{} uId：{}", activityId, uId);
+                        return Result.buildResult(Constants.ResponseCode.NO_UPDATE);
+                    }
+                } catch (DuplicateKeyException e) {
+                    status.setRollbackOnly();
+                    logger.error("记录未中奖，唯一索引冲突 activityId：{} uId：{}", activityId, uId, e);
+                    return Result.buildResult(Constants.ResponseCode.INDEX_DUP);
+                }
+                return Result.buildSuccessResult();
+            });
+        } finally {
+            dbRouter.clear();
+        }
+
     }
 }

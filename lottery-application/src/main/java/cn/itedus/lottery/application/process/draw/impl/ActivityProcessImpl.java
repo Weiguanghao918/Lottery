@@ -74,6 +74,11 @@ public class ActivityProcessImpl implements IActivityProcess {
         //3. 执行抽奖
         DrawResult drawResult = drawExec.doDrawExec(new DrawReq(req.getuId(), strategyId, String.valueOf(takeId)));
         if (Constants.DrawState.FAIL.getCode().equals(drawResult.getDrawState())) {
+            //此处在做个优化：如果是用户正常流程未中奖，那么应该扣掉当前抽奖单，修改状态为1，否则得不修改抽奖单，那么未中奖用户就可以一直参与抽奖
+            Result result = activityPartake.lockTackActivity(req.getuId(), req.getActivityId(), takeId);
+            if (!Constants.ResponseCode.SUCCESS.getCode().equals(result.getCode())) {
+                return new DrawProcessResult(Constants.ResponseCode.UN_ERROR.getCode(), Constants.ResponseCode.UN_ERROR.getInfo());
+            }
             return new DrawProcessResult(Constants.ResponseCode.LOSING_DRAW.getCode(), Constants.ResponseCode.LOSING_DRAW.getInfo());
         }
         DrawAwardVO drawAwardInfo = drawResult.getDrawAwardInfo();

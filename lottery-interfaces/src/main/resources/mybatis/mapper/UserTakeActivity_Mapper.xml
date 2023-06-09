@@ -39,6 +39,7 @@
         SET state = 1
         WHERE u_id = #{uId}
           AND activity_id = #{activityId}
+          AND take_id = #{takeId}
           AND state = 0
     </update>
 

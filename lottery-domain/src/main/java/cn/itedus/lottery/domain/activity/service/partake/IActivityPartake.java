@@ -57,4 +57,13 @@ public interface IActivityPartake {
      */
     void updateActivityStock(ActivityPartakeRecordVO activityPartakeRecordVO);
 
+    /**
+     * 锁定记录
+     *
+     * @param uId        用户ID
+     * @param activityId 活动ID
+     * @param takeId     takeID
+     * @return 结果集
+     */
+    Result lockTackActivity(String uId, Long activityId, Long takeId);
 }
