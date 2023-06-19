@@ -10,6 +10,7 @@ import cn.itedus.lottery.domain.activity.model.vo.UserTakeActivityVO;
 import cn.itedus.lottery.domain.support.ids.IdGenerator;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -39,7 +40,7 @@ public abstract class BaseActivityPartake extends ActivityPartakeSupport impleme
             return new PartakeResult(checkResult.getCode(), checkResult.getInfo());
         }
         //4.扣减活动库存，通过Redis【活动库存扣减编号，作为锁的Key，缩小颗粒度】 Begin
-        StockResult subtractionActivityResult = this.subtractionActivityStockByRedis(req.getuId(), req.getActivityId(), activityBillVO.getStockCount());
+        StockResult subtractionActivityResult = this.subtractionActivityStockByRedis(req.getuId(), req.getActivityId(), activityBillVO.getStockCount(), activityBillVO.getEndDateTime());
         if (!Constants.ResponseCode.SUCCESS.getCode().equals(subtractionActivityResult.getCode())) {
             this.recoverActivityCacheStockByRedis(req.getActivityId(), subtractionActivityResult.getStockKey(), subtractionActivityResult.getCode());
             return new PartakeResult(subtractionActivityResult.getCode(), subtractionActivityResult.getInfo());
@@ -73,12 +74,13 @@ public abstract class BaseActivityPartake extends ActivityPartakeSupport impleme
     /**
      * 扣减活动库存，通过Redis
      *
-     * @param uId        用户ID
-     * @param activityId 活动号
-     * @param stockCount 总库存
+     * @param uId         用户ID
+     * @param activityId  活动号
+     * @param stockCount  总库存
+     * @param endDateTime 结束时间
      * @return 扣减结果
      */
-    protected abstract StockResult subtractionActivityStockByRedis(String uId, Long activityId, Integer stockCount);
+    protected abstract StockResult subtractionActivityStockByRedis(String uId, Long activityId, Integer stockCount, Date endDateTime);
 
     /**
      * 查询是否存在未执行抽奖领取活动但【user_take_activity 存在state = 0，领取了但抽奖过程失败的，可以直接返回领取结果继续抽奖】

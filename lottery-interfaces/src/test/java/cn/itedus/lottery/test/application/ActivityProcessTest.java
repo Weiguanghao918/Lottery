@@ -30,7 +30,7 @@ public class ActivityProcessTest {
     @Test
     public void test_doDrawProcess() {
         DrawProcessReq req = new DrawProcessReq();
-        req.setuId("wgh_CC");
+        req.setuId("wgh_AA");
         req.setActivityId(100001L);
         DrawProcessResult drawProcessResult = activityProcess.doDrawProcess(req);
         logger.info("请求入参：{}", JSON.toJSONString(req));
