@@ -40,7 +40,7 @@ spring:
     database: 0
     port: 6379
     password: 111111
-    timeout: 3000
+
 
 # xxl-job
 # 官网：https://github.com/xuxueli/xxl-job/
@@ -50,12 +50,12 @@ spring:
 xxl:
   job:
     admin:
-      addresses: http://127.0.0.1:8081/xxl-job-admin
+      addresses: http://192.168.10.101:7397/xxl-job-admin
     executor:
       address:
       appname: lottery-job
-      ip:
-      port: 9998
+      ip: komorebissyxfree.free.idcfengye.com
+      port: 9999
       logpath: /Java/Autumn_Recruitment/Lottery-log-data/applogs/xxl-job/jobhandler
       logretentiondays: 50
     accessToken:
@@ -71,17 +71,17 @@ mini-db-router:
       list: db01,db02
       db00:
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/lottery?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://192.168.10.101:3306/lottery?useUnicode=true&characterEncoding=utf8
         username: root
         password: 980918
       db01:
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/lottery_01?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://192.168.10.101:3306/lottery_01?useUnicode=true&characterEncoding=utf8
         username: root
         password: 980918
       db02:
         driver-class-name: com.mysql.jdbc.Driver
-        url: jdbc:mysql://localhost:3306/lottery_02?useUnicode=true&characterEncoding=utf8
+        url: jdbc:mysql://192.168.10.101:3306/lottery_02?useUnicode=true&characterEncoding=utf8
         username: root
         password: 980918
 
