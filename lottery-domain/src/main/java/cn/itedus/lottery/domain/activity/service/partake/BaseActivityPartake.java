@@ -54,8 +54,8 @@ public abstract class BaseActivityPartake extends ActivityPartakeSupport impleme
             return new PartakeResult(grabResult.getCode(), grabResult.getInfo());
         }
 
-        //6. 扣减活动库存，通过Redis End
-        this.recoverActivityCacheStockByRedis(req.getActivityId(), subtractionActivityResult.getStockKey(), Constants.ResponseCode.SUCCESS.getCode());
+        //6. 扣减活动库存，通过Redis End ，这个锁需要持续到活动结束否则可能被重新获取，出超卖问题。
+//        this.recoverActivityCacheStockByRedis(req.getActivityId(), subtractionActivityResult.getStockKey(), Constants.ResponseCode.SUCCESS.getCode());
 
 
         return buildPartakeResult(activityBillVO.getStrategyId(), takeId, activityBillVO.getStockCount(), subtractionActivityResult.getStockSurplusCount(), Constants.ResponseCode.SUCCESS);
